@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 
-export default function Scanner() {
+export default function Scanner({
+  scans,
+  setScans,
+}: {
+  scans: string[]
+  setScans: (scans: string[]) => void
+}) {
   const [hasPermission, setHasPermission] = useState(false)
   const [scanned, setScanned] = useState(false)
 
-  const [scans, setScans] = useState<string[]>([])
+  // const [scans, setScans] = useState<string[]>([])
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
