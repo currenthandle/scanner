@@ -2,12 +2,28 @@
 import { StatusBar } from 'expo-status-bar'
 import { Text, View } from 'react-native'
 import Scanner from './components/Scanner'
-import { useState } from 'react'
-// import React from 'react'
+import { useEffect, useRef, useState } from 'react'
+import axios from 'axios'
+import * as WebAssembly from 'react-native-webassembly'
 
 export default function App() {
-  // console.log('app somthing new')
-  // console.error('log error')
+  const wasmRef = useRef<any>()
+  useEffect(() => {
+    const loadWasm = async () => {
+      const { data: bufferSource } = await axios({
+        url: 'https://github.com/torch2424/wasm-by-example/raw/master/examples/hello-world/demo/assemblyscript/hello-world.wasm',
+        method: 'get',
+        responseType: 'arraybuffer',
+      })
+
+      const module = await WebAssembly.instantiate<{
+        add: (a: number, b: number) => number
+      }>(bufferSource)
+
+      wasmRef.current = module
+    }
+    loadWasm()
+  }, [])
   const [scans, setScans] = useState<string[]>([])
   return (
     <View className='flex-1 items-center justify-center bg-white'>
@@ -26,14 +42,3 @@ export default function App() {
     </View>
   )
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     paddingTop: 200,
-//     height: 100000,
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// })
