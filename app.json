@@ -2,21 +2,6 @@
   "expo": {
     "plugins": [
       [
-        "expo-build-properties",
-        {
-          "android": {
-            "newArchEnabled": true,
-            "compileSdkVersion": 31,
-            "targetSdkVersion": 31,
-            "buildToolsVersion": "31.0.0"
-          },
-          "ios": {
-            "newArchEnabled": true,
-            "deploymentTarget": "13.0"
-          }
-        }
-      ],
-      [
         "expo-barcode-scanner",
         {
           "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
