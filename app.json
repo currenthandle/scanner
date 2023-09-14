@@ -7,7 +7,8 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
         }
       ],
-      "expo-build-properties"
+      "expo-build-properties",
+      "react-native-webassembly"
     ],
     "name": "scanner-qrv-t",
     "slug": "scanner-qrv-t",
@@ -20,7 +21,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -34,7 +37,9 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["android.permission.CAMERA"],
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
       "package": "com.anonymous.scannerqrvt"
     },
     "web": {

@@ -20,7 +20,7 @@ export default function App() {
         add: (a: number, b: number) => number
       }>(bufferSource)
 
-      wasmRef.current = module
+      // wasmRef.current = module
     }
     loadWasm()
   }, [])
